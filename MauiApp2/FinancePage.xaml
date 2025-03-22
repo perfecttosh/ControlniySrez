@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.FinancePage"
+             Title="Создание расхода">
+    <StackLayout>
+        <StackLayout x:Name="financeStack">
+            <Label Text="Название расхода" FontSize="40" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <Entry Text="{Binding Title}" FontSize="Medium" />
+            <Label Text="Подробности" FontSize="28" />
+            <Entry Text="{Binding Description}" FontSize="Medium" />
+            <Label Text="Сумма" FontSize="26"/>
+            <Entry  Text="{Binding Value}" FontSize="Medium"/>
+        </StackLayout>
+        <Label Text="Категория" FontSize="28" />
+        <Picker SelectedItem="{Binding SelectedCategory}" Title="Выберите категорию" FontSize="Medium">
+            <Picker.ItemsSource>
+                <Binding Path="Categories" />
+            </Picker.ItemsSource>
+            <Picker.ItemDisplayBinding>
+                <Binding Path="CategoryName" />
+            </Picker.ItemDisplayBinding>
+        </Picker>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button Text="Добавить" Command="{Binding ListViewModel.SaveFinanceCommand}" CommandParameter="{Binding}" />
+            <Button Text="Удалить" Command="{Binding ListViewModel.DeleteFinanceCommand}" CommandParameter="{Binding}" />
+            <Button Text="Назад" Command="{Binding Path=ListViewModel.BackCommand}" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

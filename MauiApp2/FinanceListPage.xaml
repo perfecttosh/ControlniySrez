@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.FinanceListPage"
+             Title="Список финансовых расходов">
+    <StackLayout>
+        <Button Text="Добавить" Command="{Binding CreateFinanceCommand}" />
+        <ListView x:Name="booksList" ItemsSource="{Binding Finances}"
+              SelectedItem="{Binding SelectedFinance, Mode=TwoWay}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <Label Text="{Binding Title}" FontSize="Medium" TextColor="Purple" Background="LightSalmon" Padding="10"/>
+                                <Label Text="{Binding Description}" FontSize="Micro" Margin="10"/>
+                                <Label Text="{Binding Value}" FontSize="Micro" Margin="5"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
